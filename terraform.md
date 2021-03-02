@@ -75,3 +75,8 @@ output "public_dns" {
 }
  ```
 Si nos fijamos en el valor (value) del output indicado anteriormente, podemos ver que es el dato que nos devuelve el comando `terraform show`.
+
+
+Variables
+----
+Terraform nos permite usar las variabels de varias maneras, podemos poner un fichero diferente (recordemos que no se puede llamar .tf ya que las cogeria entonces), llamandolas con `-vars-file` o con variables de entorno, estas tienen que empezar con TF_VAR_, es importante tener en cuenta que solo cogera lo que estar despues de TF_VAR_, si creamos la variables TF_VAR_ami, terraform buscara la variable ami. 
