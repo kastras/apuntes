@@ -80,3 +80,19 @@ Si nos fijamos en el valor (value) del output indicado anteriormente, podemos ve
 Variables
 ----
 Terraform nos permite usar las variabels de varias maneras, podemos poner un fichero diferente (recordemos que no se puede llamar .tf ya que las cogeria entonces), llamandolas con `-vars-file` o con variables de entorno, estas tienen que empezar con TF_VAR_, es importante tener en cuenta que solo cogera lo que estar despues de TF_VAR_, si creamos la variables TF_VAR_ami, terraform buscara la variable ami. 
+
+Workspaces
+---
+Terraform nos permite trabajar con diferentes espacios de trabajo o workspaces con los mismos ficheros que tenemos. Las ventajas que tienen son las siguientes: 
+ 
+ - Separación del fichero de estado en los diferentes entornos (Cuando el fichero de estado es muy grande este puede darnos problemas). 
+ - Poder trabajar con diferentes entornos (dev,pre y pro) con los mismos ficheros que estamos editando.
+
+Una vez que trabajamos con workspaces y lanzamos un terrafom plan, este crea a carpeta "terraform.tfstate.d/$workspace", almacenando nestas carpetas o arquivo state (estado). 
+
+State
+---
+Este fichero es muy importante, terraform no consulta en nuestro proveedor la esturctura que esta montada, por lo que terraform genera un fichero de estado con los datos aplicados a través del mismo.
+Esto pese a ser una desventaja, tiene la opción de que los recursos criticos (como almacenamiento) no puedan ser borrados a través de terraform de manera accidental.
+El fichero de estado contiene datos sensibles por lo que no es recomendable subirlo de manera pública, pero si podemos compartirlo a través de contenedores privados como el s3 de amazon https://www.terraform.io/docs/language/settings/backends/s3.html . 
+
