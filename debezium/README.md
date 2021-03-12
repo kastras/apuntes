@@ -122,7 +122,7 @@ mvn compile exec:java \
   --region=europe-west2-a "
 ```
 
-5. Ejecutamos nuestro runner de dataflow (IMPORTATE!!!, con el usuario que generamos en el paso 1). 
+5. Ejecutamos nuestro runner de dataflow . 
 ```
 PROJECT_ID=formacion-303709
 JOB_NAME=pubsub-to-bigquery-`date +"%Y%m%d-%H%M%S%z"`
